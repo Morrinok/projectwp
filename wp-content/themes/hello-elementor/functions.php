@@ -217,4 +217,11 @@ if ( ! function_exists( 'hello_elementor_body_open' ) ) {
 	}
 }
 
+add_action( 'wp_logout', 'my_custom_logout_redirect' );
+function my_custom_logout_redirect(){
+  wp_redirect( home_url("Inicio") );
+  exit();
+}
+add_filter( 'wc_add_to_cart_message_html', '__return_false' );
+
 add_filter( 'wp_image_editors', 'change_graphic_lib' ); function change_graphic_lib($array) { return array( 'WP_Image_Editor_GD', 'WP_Image_Editor_Imagick' ); }
